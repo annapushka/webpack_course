@@ -12,7 +12,7 @@ interface EnvVariables {
 
 
 export default (env: EnvVariables) => {
-  
+
   const isDev = env.mode === 'development';
 
   const config: webpack.Configuration = {
@@ -25,8 +25,8 @@ export default (env: EnvVariables) => {
       },
       plugins: [
         new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'public', 'index.html') }),
-        new webpack.ProgressPlugin()
-      ],
+        isDev && new webpack.ProgressPlugin()
+      ].filter(Boolean),
       module: {
         rules: [
           {
@@ -39,11 +39,11 @@ export default (env: EnvVariables) => {
       resolve: {
         extensions: ['.tsx', '.ts', '.js'],
       },
-      devtool: 'inline-source-map',
-      devServer: {
+      devtool: isDev && 'inline-source-map',
+      devServer: isDev ? {
         port: env.port ?? 3000,
         open: true,
-      }
+      } : undefined,
     }
     return config;
 };
