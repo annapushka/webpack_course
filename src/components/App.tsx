@@ -1,6 +1,7 @@
 import { useState } from "react"
 import classes from "./App.module.scss"
-import { Link, Outlet } from "react-router-dom"
+import { Link } from "react-router-dom"
+import { About } from "@/pages/About"
 
 export const App = () => {
     const [count, setCount] = useState(0)
@@ -22,7 +23,7 @@ export const App = () => {
                     INC
                 </span>
             </button>
-            <Outlet/>
+            <About />
         </div>
     )
 }
