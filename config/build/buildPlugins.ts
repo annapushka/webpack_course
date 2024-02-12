@@ -4,6 +4,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import { BuildOptions } from "./types/types";
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 
 export function buildPlugins({ mode, paths, analyzer, platform }: BuildOptions): Configuration['plugins'] {
     const isDev = mode === 'development';
@@ -28,6 +29,7 @@ export function buildPlugins({ mode, paths, analyzer, platform }: BuildOptions):
                 chunkFilename: 'css/[name].[contenthash:8].css',
             })
         );
+        plugins.push(new ForkTsCheckerWebpackPlugin());
     }
 
     if (analyzer) {
