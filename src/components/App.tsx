@@ -14,6 +14,11 @@ export const App = () => {
     }
     return (
         <div style={{padding: 32}}>
+            <h1>Platform: {__PLATFORM__}</h1>
+            {__PLATFORM__ === 'mobile' ? 'mobile' : 'desktop'}
+            <br/>
+            <h1>Environment: {__ENV__}</h1>
+            {__ENV__ === 'production' ? 'production' : 'development'}
             <div>
                 <img width={100} src={IconPng} alt="icon"/>
                 <img width={100} src={IconJpg} alt="icon"/>
