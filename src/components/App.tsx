@@ -13,7 +13,7 @@ export const App = () => {
         setCount(prevCount => prevCount + 1)
     }
     return (
-        <div style={{padding: 32}}>
+        <div style={{padding: 32}} data-testid={'App.DataTestId'}>
             <h1>Platform: {__PLATFORM__}</h1>
             {__PLATFORM__ === 'mobile' ? 'mobile' : 'desktop'}
             <br/>
